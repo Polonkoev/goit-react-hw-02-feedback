@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: center;
+
+}
+.btn{
+    border: 1px solid rgb(119, 119, 45);
+    border-radius: 4px;
+    background-color: bisque;
+    margin-left: 5px;
+}
+.btn:hover{
+    background-color: aquamarine;
+}

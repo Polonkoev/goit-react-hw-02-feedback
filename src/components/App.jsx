@@ -11,11 +11,16 @@ class App extends Component {
     bad: 0,
   };
 
-addFeedback = (prevState)=>{
-  this.setState(prevState =>{
-    return this.good += 1
-  })
-}
+  addFeedback = state => {
+    this.setState(prevState => ({
+      [state]: prevState[state] + 1,
+    }));
+  };
+    
+  
+
+
+
 
 
 
@@ -33,17 +38,19 @@ addFeedback = (prevState)=>{
     return (
       <>
         <Section title={'Please leave feedback'} children>
-{this.countTotalFeedback() === 0 ? <Notification message={'There is no feedback'}/> : <Statistics
+        <FeedbackOptions options={this.state} onLeaveFeedback={this.addFeedback}/>
+{this.countTotalFeedback() === 0 ? <Notification message={'There is no feedback'}/> : <Statistics 
+            title={'Statistics'}
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
           />}
 
         
           
-           <FeedbackOptions options={this.state} onLeaveFeedback={this.addFeedback}/>
+           
         </Section>
       </>
     );
